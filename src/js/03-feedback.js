@@ -5,7 +5,7 @@ const formEl = document.querySelector('.feedback-form');
 formEl.addEventListener('input', throttle(onInputChangeValue, 500));
 formEl.addEventListener('submit', onSubmitForm);
 
-const STORAGE_KEY = ' feedback-form-state';
+const STORAGE_KEY = 'feedback-form-state';
 let formDate = {};
 
 function onInputChangeValue(e) {
@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const dateLocalStore = localStorage.getItem(STORAGE_KEY);
         if (!dateLocalStore) return;
         formDate = JSON.parse(dateLocalStore);
+
         Object.entries(formDate).forEach(([key, val]) => {
-        });
-    }
-    catch (error) {
+            formEl.elements[key].value = val; }); 
+    }catch (error) {
         console.log(error.message);
     }
-});
+});  
 function onSubmitForm(e) {
     e.preventDefault();
     console.log(formDate);
