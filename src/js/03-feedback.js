@@ -12,9 +12,9 @@ function onInputChangeValue(e) {
     const { name, value } = e.target;
     formDate[name] = value.trim();
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formDate));
-
 }
-document.addEventListener('DOMContentLoaded', function () {
+
+ document.addEventListener('DOMContentLoaded', function () {
     try {
         const dateLocalStore = localStorage.getItem(STORAGE_KEY);
         if (!dateLocalStore) return;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         Object.entries(formDate).forEach(([key, val]) => {
             formEl.elements[key].value = val; }); 
-    }catch (error) {
+    } catch (error) {
         console.log(error.message);
     }
 });  
@@ -31,5 +31,5 @@ function onSubmitForm(e) {
     console.log(formDate);
     formDate = {};
     e.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY)
 }
